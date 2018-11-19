@@ -1,2 +1,65 @@
+* {
+    box-sizing: border-box;
+}
 
+html {
+    height: 100vh;
+}
 
+body {
+    margin: 0;
+    padding: 0;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("../images/CrashBandicootBg.jpg")
+        center center / cover
+        no-repeat
+}
+
+.score {
+    width: 100%;
+    color: white;
+
+    &__container {
+        width: 10em;
+        height: 3em;
+        padding: 0.5em;
+        margin: 1em auto;
+        text-align: center;
+        background: rgba(238, 176, 7, 0.75);
+        box-shadow: 1px 1px 5px 1px rgb(238, 176, 7);
+        border-radius: 10px;
+    }
+}
+
+.board {
+    width: 650px;
+    height: 500px;
+    margin: 1em auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+
+    &__box {
+        width: 50px;
+        height: 50px;
+        border: 1px solid red;
+    }
+}
+
+.crash {
+    background: url("../images/collect.png") -10px -10px;
+}
+
+.diamond {
+    background: url("../images/collect.png") -148px -10px;
+}
+
+.mystery-box {
+    background: url("../images/collect.png") -80px -10px;
+}
+
+.apple {
+    background: url("../images/collect.png") -10px -80px;
+}

@@ -13,17 +13,17 @@ const wait            = require('gulp-wait');
 const csso            = require('gulp-csso');
 
 
-function showError(err) {
-    notifier.notify({
-        title: 'Error in sass',
-        message: err.messageFormatted
-      });
+// function showError(err) {
+//     notifier.notify({
+//         title: 'Error in sass',
+//         message: err.messageFormatted
+//       });
 
-    console.log(colors.red('==============================='));
-    console.log(colors.red(err.messageFormatted));
-    console.log(colors.red('==============================='));
-    this.emit('end');
-}
+//     console.log(colors.red('==============================='));
+//     console.log(colors.red(err.messageFormatted));
+//     console.log(colors.red('==============================='));
+//     this.emit('end');
+// }
 
 
 gulp.task("browseSync", function() {
@@ -31,7 +31,7 @@ gulp.task("browseSync", function() {
         server: "./dist",
         notify: true,
         host: "192.168.0.24", //IPv4 Address Wirless LAN adapter WiFi from ipconfig
-        //port: 3000,
+        port: 3000,
         open: true, //czy otwierac strone
         //browser: "google chrome" //jaka przeglądarka ma być otwierana - zaleznie od systemu - https://stackoverflow.com/questions/24686585/gulp-browser-sync-open-chrome-only
     });
@@ -42,11 +42,11 @@ gulp.task("sass", function() {
     return gulp.src("src/scss/style.scss")
         .pipe(wait(500))
         .pipe(plumber({ //przeciwdziala bledom w pipe ktore np przerywaja watch
-            errorHandler: showError
+            // errorHandler: showError
         }))
         .pipe(sourcemaps.init()) //inicjalizacja sourcemap przed zabawa na plikach
         .pipe(sass({
-            outputStyle: "compressed" //nested, expanded, compact, compressed
+            outputStyle: "expanded" //nested, expanded, compact, compressed
         }))
         .pipe(autoprefixer({
             browsers: ["> 5%"]
