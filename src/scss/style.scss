@@ -63,3 +63,27 @@ body {
 .apple {
     background: url("../images/collect.png") -10px -80px;
 }
+
+.hidden {
+    display: none;
+}
+
+.game-over {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    padding: 10px;
+    background: rgba(238, 176, 7, 0.75);
+
+    pre {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        font-size: 50px;
+        font-weight: bold;
+        color: brown;
+    }
+}
