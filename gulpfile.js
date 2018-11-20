@@ -26,16 +26,16 @@ const csso            = require('gulp-csso');
 // }
 
 
-gulp.task("browseSync", function() {
-    browserSync.init({
-        server: "./dist",
-        notify: true,
-        host: "192.168.0.24", //IPv4 Address Wirless LAN adapter WiFi from ipconfig
-        port: 3000,
-        open: true, //czy otwierac strone
-        //browser: "google chrome" //jaka przeglądarka ma być otwierana - zaleznie od systemu - https://stackoverflow.com/questions/24686585/gulp-browser-sync-open-chrome-only
-    });
-});
+// gulp.task("browseSync", function() {
+//     browserSync.init({
+//         server: "./dist",
+//         notify: true,
+//         host: "192.168.0.24", //IPv4 Address Wirless LAN adapter WiFi from ipconfig
+//         port: 3000,
+//         open: true, //czy otwierac strone
+//         //browser: "google chrome" //jaka przeglądarka ma być otwierana - zaleznie od systemu - https://stackoverflow.com/questions/24686585/gulp-browser-sync-open-chrome-only
+//     });
+// });
 
 
 gulp.task("sass", function() {
@@ -58,7 +58,7 @@ gulp.task("sass", function() {
         }))
         .pipe(sourcemaps.write(".")) //po modyfikacjach na plikach zapisujemy w pamieci sourcemap
         .pipe(gulp.dest("dist/css")) //i calosc zapisujemy w dest
-        .pipe(browserSync.stream({match: "**/*.css"}));
+        // .pipe(browserSync.stream({match: "**/*.css"}));
 });
 
 
@@ -67,7 +67,7 @@ gulp.task("es6", function(cb) { //https://github.com/webpack/docs/wiki/usage-wit
         if (err) throw err;
         console.log(stats.toString());
         cb();
-        browserSync.reload();
+        // browserSync.reload();
     })
 })
 
@@ -75,11 +75,10 @@ gulp.task("es6", function(cb) { //https://github.com/webpack/docs/wiki/usage-wit
 gulp.task("watch", function() {
     gulp.watch("src/scss/**/*.scss", ["sass"]);
     gulp.watch("src/js/**/*.js", ["es6"]);
-    gulp.watch("dist/**/*.html").on("change", browserSync.reload);
 });
 
 
 gulp.task("default", function() {
     console.log(colors.yellow("======================= start ======================="));
-    gulp.start(["sass", "es6", "browseSync", "watch"]);
+    gulp.start(["sass", "es6", "watch"]);
 });
